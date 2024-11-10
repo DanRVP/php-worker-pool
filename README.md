@@ -57,8 +57,8 @@ $pool = new Threadpool(
 
 foreach ($account_ids as $id) {
   // You can alternatively use Threadpool::setCommands() to set all at once
-  $threadpool->pushCommand([$id]);
+  $pool->pushCommand([$id]);
 }
 
-$threadpool->execute();
+$pool->execute();
 ```
