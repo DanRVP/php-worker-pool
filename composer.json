@@ -1,0 +1,21 @@
+{
+    "name": "dan-rogers/threadpool",
+    "description": "A very basic implementation of a Threadpool in PHP for shell applications",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Dan Rogers"
+        }
+    ],
+    "require": {
+        "php": ">= 5.6",
+        "psr/log": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "Threadpool\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "license": "Apache-2.0"
+}
