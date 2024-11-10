@@ -142,7 +142,7 @@ final class Threadpool
             } while (!$available_thread);
 
             $this->logger->log(LogLevel::INFO, "Found thread for command $full_command");
-            exec("nohup /bin/php /home/shiptheory/bin/cake.php $full_command >> $this->output_destination 2>&1 &");
+            exec("nohup $full_command >> $this->output_destination 2>&1 &");
             unset($this->commands[$key]);
         }
     }
