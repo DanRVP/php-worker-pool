@@ -1,7 +1,7 @@
-# php-threadpool
+# php-workerpool
 A simplistic approach to a threadpool in PHP
 
-## Installation 
+## Installation
 ```
 composer require dan-rogers/threadpool
 ```
@@ -33,31 +33,31 @@ Invoking the above would be as simple as running `php child-process.php {account
 ```php
 <?php
 use Psr\Log\NullLogger;
-use Threadpool\Threadpool;
+use WorkerPool\WorkerPool;
 
 $account_ids = [1, 2, 3, 4 ... 199, 200];
 
 $base_command = 'php child-process.php'; // The child process we want to execute.
 $logger = new NullLogger(); // A PSR 3 compliant logger to be used for monitoring and logging.
-$max_threads = 10; // The max number of threads the threadpool can utilise at once.
+$max_threads = 10; // The max number of threads the workerpool can utilise at once.
 $thread_check_sleep = 3000; // When all threads are in use how long should the pool wait before checking for an available thread.
 $max_event_exec_time = 60000; // The maximum amount of time the thread should live for.
 $check_limit = 1000; // How many checks should the pool make for a free thread before exiting.
 $output_destination = 'mylog.log'; // Where the output of the child should be directed.
 
-$pool = new Threadpool(
-  $base_command,
-  $logger,
-  $max_threads,
-  $thread_check_sleep,
-  $max_event_exec_time,
-  $check_limit,
-  $output_destination
+$pool = new WorkerPool(
+    $base_command,
+    $logger,
+    $max_threads,
+    $thread_check_sleep,
+    $max_event_exec_time,
+    $check_limit,
+    $output_destination
 );
 
 foreach ($account_ids as $id) {
-  // You can alternatively use Threadpool::setCommands() to set all at once
-  $pool->pushCommand([$id]);
+    // You can alternatively use WorkerPool::setJobs() to set all at once
+    $pool->pushCommand([$id]);
 }
 
 $pool->execute();

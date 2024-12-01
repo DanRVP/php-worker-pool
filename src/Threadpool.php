@@ -1,10 +1,10 @@
 <?php
 
-namespace Threadpool;
+namespace WorkerPool;
 
 use Psr\Log\LogLevel;
 
-final class Threadpool
+final class WorkerPool
 {
     /**
      * PSR3 Logger
@@ -39,7 +39,7 @@ final class Threadpool
      *
      * @var array
      */
-    private $commands = [];
+    private $jobs = [];
 
     /**
      * Where the output of the command should be piped to
@@ -94,35 +94,33 @@ final class Threadpool
     }
 
     /**
-     * Sets a full array of commands in the commands queue
+     * Sets a full array of jobs in the jobs queue
      *
      * @param string[] $args
      * @return void
      */
-    public function setCommands(array $args)
+    public function setJobs(array $args)
     {
-        $this->commands[] = $args;
+        $this->jobs[] = $args;
     }
 
     /**
-     * Pushes a command request into the commands queue
+     * Pushes a job request into the jobs queue
      *
      * @param array $args
      * @return void
      */
-    public function pushCommand(array $args)
+    public function pushJob(array $args)
     {
-        $this->commands[] = $args;
+        $this->jobs[] = $args;
     }
 
     /**
-     * Execute a batch of commands in a threaded manner via exec
-     *
-     * @param array[] $commands An array of commands to be run by exec.
+     * Execute a batch of jobs in a parallel manner via exec
      */
     public function execute()
     {
-        foreach ($this->commands as $key => $args) {
+        foreach ($this->jobs as $key => $args) {
             $i_thread = 0;
             $available_thread = false;
             $full_command = $this->base_command . ' ' . implode(' ', $args);

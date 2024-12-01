@@ -1,6 +1,6 @@
 {
-    "name": "dan-rogers/threadpool",
-    "description": "A very basic implementation of a Threadpool in PHP for shell applications",
+    "name": "dan-rogers/workerpool",
+    "description": "A very basic implementation of a worker pool in PHP for shell applications",
     "type": "library",
     "authors": [
         {
@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-          "Threadpool\\": "src/"
+          "WorkerPool\\": "src/"
         }
     },
     "minimum-stability": "stable",
