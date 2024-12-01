@@ -57,7 +57,7 @@ $pool = new WorkerPool(
 
 foreach ($account_ids as $id) {
     // You can alternatively use WorkerPool::setJobs() to set all at once
-    $pool->pushCommand([$id]);
+    $pool->pushJob[$id]);
 }
 
 $pool->execute();
