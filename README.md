@@ -3,7 +3,7 @@ A simplistic approach to a threadpool in PHP
 
 ## Installation
 ```
-composer require dan-rogers/threadpool
+composer require dan-rogers/workerpool
 ```
 
 ## Example use case
